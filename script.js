@@ -19,15 +19,14 @@ class Stopwatch {
 	}
 
 	format(times) {
+        function pad0(value) {
+		    let result = value.toString();
+		    if (result.length < 2) {
+		        result = '0' + result;
+		    }
+		    return result;
+			}
         return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
-	}
-
-	function pad0(value) {
-    let result = value.toString();
-    if (result.length < 2) {
-        result = '0' + result;
-    }
-    return result;
 	}
 
 	start() {
@@ -59,7 +58,7 @@ class Stopwatch {
     this.running = false;
     clearInterval(this.watch);
 	}
-}
+};
 
 const stopwatch = new Stopwatch(
 document.querySelector('.stopwatch'));
